@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brain Tumor Detector</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+  <header>
+    <a href="#"><div class="home">Home</div></a>
+    <a href="#"><div class="about">About</div></a>
+    <a href="#"><div class="contact">Contact</div></a>
+    <a href="#"><div class="github">GitHub</div></a>
+  </header>
+
+  <div class="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <nav class="nav-menu" id="nav-menu">
+    <a href="#">Home</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+  </nav>
+
+  <div class="glow-bg"></div>
+
+  <div class="head">
+    <h1 class="P1">Brain Tumor Detector</h1>
+    <div class="P2">Detecting Brain Tumors from MRI Images</div>
+    <div class="P3">A Deep Learning Project</div>
+  </div>
+
+  <div class="upload-container">
+    <form action="/predict" method="POST" enctype="multipart/form-data">
+      <input type="file" name="file" id="fileInput" accept="image/*" required onchange="previewImage(event)">
+      <button type="submit">Upload and Predict</button>
+    </form>
+
+    <div class="image-results">
+      <div class="image-preview">
+        <h3>Uploaded MRI</h3>
+        <img id="preview" src="#" alt="No image selected" style="max-width: 300px; display: none;">
+      </div>
+
+      <div class="prediction-result">
+        <h3>Prediction</h3>
+        {% if prediction %}
+          <p><strong>Type:</strong> {{ prediction }}</p>
+          <p><strong>Confidence:</strong> {{ confidence }}%</p>
+        {% else %}
+          <p>No prediction yet</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

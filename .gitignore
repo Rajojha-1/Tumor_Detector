@@ -1,0 +1,21 @@
+# Virtual env
+.venv/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Model files (optional - if you want to upload separately)
+*.h5
+
+# OS files
+*.DS_Store
+
+# IDE files
+.idea/
+.vscode/
+
+# Logs
+*.log
